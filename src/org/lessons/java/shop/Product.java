@@ -37,12 +37,30 @@ public class Product {
         return this.name;
     }
 
+    public void setName(String newName) {
+        if (newName != null && !newName.isBlank()) {
+            this.name = newName;
+        }
+    }
+
     public String getDescription() {
         return this.description;
     }
 
+    public void setDescription(String newDescription) {
+        if (newDescription != null && !newDescription.isBlank()) {
+            this.description = newDescription;
+        }
+    }
+
     public BigDecimal getBasePrice() {
         return this.price;
+    }
+
+    public void setBasePrice(BigDecimal newBasePrice) {
+        if (newBasePrice != null && newBasePrice.compareTo(BigDecimal.ZERO) > 0) {
+            this.price = newBasePrice;
+        }
     }
 
     public BigDecimal getIva() {
@@ -51,6 +69,12 @@ public class Product {
         }
 
         return null;
+    }
+
+    public void setIva(BigDecimal newIva) {
+        if (newIva != null && newIva.compareTo(BigDecimal.ZERO) >= 0) {
+            this.iva = newIva;
+        }
     }
 
     public BigDecimal getFullPrice() {
