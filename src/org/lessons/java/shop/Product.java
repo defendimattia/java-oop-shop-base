@@ -1,38 +1,38 @@
 package org.lessons.java.shop;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Product {
-    String code;
-    String name;
-    String description;
-    float price;
-    int iva;
+     public String code;
+     public String name;
+     public String description;
+     public BigDecimal price;
+     public BigDecimal iva;
 
-    Product(String name, String description, float price) {
+    public Product(String name, String description, BigDecimal price) {
         Random randomNum = new Random();
         this.code = String.format("%06d", randomNum.nextInt(1000000));
         this.name = name;
         this.description = description;
         this.price = price;
-        this.iva = 22;
+        this.iva = new BigDecimal("0.22");
     }
 
-    float showBasePrice() {
-        System.out.println(this.price);
+    BigDecimal showBasePrice() {
         return this.price;
     }
 
-    float showFullPrice() {
-        float fullPrice = this.price + (this.price * iva / 100);
-        fullPrice = Math.round(fullPrice * 100) / 100f;
-        System.out.println(fullPrice);
-        return fullPrice;
+    BigDecimal showFullPrice() {
+        if (price != null) {
+            return price.add(price.multiply(iva).setScale(2, RoundingMode.DOWN));
+        }
+
+        return null;
     }
 
     String showFullName() {
-        String fullName = code + "-" + name;
-        System.out.println(fullName);
-        return fullName;
+        return code + "-" + name;
     }
 }
