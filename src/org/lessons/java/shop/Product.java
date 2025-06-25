@@ -21,4 +21,8 @@ public class Product {
     void showBasePrice() {
         System.out.println(this.price);
     }
+
+    void showFullPrice() {
+        System.out.println(this.price + (this.price * iva / 100) );
+    }
 }
