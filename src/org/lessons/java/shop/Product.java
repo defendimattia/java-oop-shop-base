@@ -11,13 +11,13 @@ public class Product {
      private BigDecimal price;
      private BigDecimal iva;
 
-    public Product(String name, String description, BigDecimal price) {
+    public Product(String name, String description, BigDecimal price, BigDecimal iva) {
         Random randomNum = new Random();
         this.code = String.format("%06d", randomNum.nextInt(1000000));
         this.name = name;
         this.description = description;
         this.price = price;
-        this.iva = new BigDecimal("0.22");
+        this.iva = iva;
     }
 
     public Product(String name) {
@@ -26,7 +26,7 @@ public class Product {
         this.name = name;
         this.description = "Nessuna descrizione inserita";
         this.price = new BigDecimal(0);
-        this.iva = new BigDecimal("0.22");
+        this.iva = new BigDecimal(0);
     }
 
     BigDecimal showBasePrice() {
