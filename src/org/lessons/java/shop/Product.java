@@ -18,11 +18,21 @@ public class Product {
         this.iva = 22;
     }
 
-    void showBasePrice() {
+    float showBasePrice() {
         System.out.println(this.price);
+        return this.price;
     }
 
-    void showFullPrice() {
-        System.out.println(this.price + (this.price * iva / 100) );
+    float showFullPrice() {
+        float fullPrice = this.price + (this.price * iva / 100);
+        fullPrice = Math.round(fullPrice * 100) / 100f;
+        System.out.println(fullPrice);
+        return fullPrice;
+    }
+
+    String showFullName() {
+        String fullName = code + "-" + name;
+        System.out.println(fullName);
+        return fullName;
     }
 }
