@@ -5,11 +5,11 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 public class Product {
-     public String code;
-     public String name;
-     public String description;
-     public BigDecimal price;
-     public BigDecimal iva;
+     private String code;
+     private String name;
+     private String description;
+     private BigDecimal price;
+     private BigDecimal iva;
 
     public Product(String name, String description, BigDecimal price) {
         Random randomNum = new Random();
@@ -17,6 +17,15 @@ public class Product {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.iva = new BigDecimal("0.22");
+    }
+
+    public Product(String name) {
+        Random randomNum = new Random();
+        this.code = String.format("%06d", randomNum.nextInt(1000000));
+        this.name = name;
+        this.description = "Nessuna descrizione inserita";
+        this.price = new BigDecimal(0);
         this.iva = new BigDecimal("0.22");
     }
 
