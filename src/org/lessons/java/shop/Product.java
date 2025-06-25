@@ -5,11 +5,11 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 public class Product {
-     private String code;
-     private String name;
-     private String description;
-     private BigDecimal price;
-     private BigDecimal iva;
+    private String code;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private BigDecimal iva;
 
     public Product(String name, String description, BigDecimal price, BigDecimal iva) {
         Random randomNum = new Random();
@@ -29,19 +29,39 @@ public class Product {
         this.iva = new BigDecimal(0);
     }
 
-    BigDecimal showBasePrice() {
+    public String getCode() {
+        return this.code;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public BigDecimal getBasePrice() {
         return this.price;
     }
 
-    BigDecimal showFullPrice() {
-        if (price != null) {
+    public BigDecimal getIva() {
+        if (price != null && iva != null) {
+            return this.iva;
+        }
+
+        return null;
+    }
+
+    public BigDecimal getFullPrice() {
+        if (price != null && iva != null) {
             return price.add(price.multiply(iva).setScale(2, RoundingMode.DOWN));
         }
 
         return null;
     }
 
-    String showFullName() {
+    public String getFullName() {
         return code + "-" + name;
     }
 }
